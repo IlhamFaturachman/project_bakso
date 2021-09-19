@@ -1,5 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:show_bakso/Map.dart';
+import 'package:slide_to_confirm/slide_to_confirm.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -286,6 +289,15 @@ class _HomeState extends State<Home> {
                 child: Container(
                   width: size.width * 0.9,
                   height: size.height * 0.37,
+                  child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Peta(),
+                      ),
+                    );
+                  },
                   child: Stack(
                     children: [
                       Container(
@@ -354,45 +366,27 @@ class _HomeState extends State<Home> {
                   ),
                 ),
               ),
+              ),
               Container(
-                width: size.width * 1,
+                width: size.width * 0.9,
                 height: size.height * 0.15,
-                child: Stack(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(left: size.width * 0.05),
-                      child: Container(
-                        width: size.width * 0.25,
-                        decoration: BoxDecoration(
-                            color: const Color(0xffEA8F06),
-                            borderRadius: BorderRadius.circular(15),
-                            image: DecorationImage(
-                                image: AssetImage("assets/images/bunder.png"),
-                                fit: BoxFit.none)),
+                child: ConfirmationSlider(
+                  height: size.height * 0.15,
+                  foregroundColor: Color(0xffEA8F06),
+                  foregroundShape: BorderRadius.circular(50),
+                  backgroundColor: Color(0xFFfef6ea),
+                  backgroundShape: BorderRadius.circular(50),
+                  text: "               Geser untuk Berjualan",
+                  textStyle:
+                      TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  onConfirmation: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Peta(),
                       ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: size.width * 0.05),
-                      child: Container(
-                        width: size.width * 0.9,
-                        height: size.height * 0.15,
-                        decoration: BoxDecoration(
-                          color: const Color(0x1AEA8F06),
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: Center(
-                          child: Padding(
-                            padding: EdgeInsets.only(left: size.width * 0.25),
-                            child: Text(
-                              "Geser untuk berjualan",
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                    );
+                  },
                 ),
               ),
               Padding(
